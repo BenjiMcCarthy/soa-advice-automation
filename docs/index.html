@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOA Automation Platform — Proposal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            background: #fafafa;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 100px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #a5b4fc;
+            font-weight: 500;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ── Sections ── */
+        section {
+            padding: 80px 0;
+        }
+
+        section + section {
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6366f1;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-top: 40px;
+            color: #1e293b;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+
+        strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* ── Flow Diagram ── */
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 48px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            min-width: 180px;
+            flex: 1;
+            transition: all 0.2s;
+        }
+
+        .flow-step:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
+        }
+
+        .flow-step .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .flow-step .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .flow-step .desc {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            padding: 0 8px;
+            flex-shrink: 0;
+        }
+
+        /* ── Tables ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 14px 20px;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody td {
+            padding: 14px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #475569;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* ── Stat Cards ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #6366f1;
+            letter-spacing: -1px;
+        }
+
+        .stat-card .unit {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .stat-card .context {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        /* ── ROI Highlight ── */
+        .roi-highlight {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 20px;
+            padding: 48px;
+            color: white;
+            margin: 40px 0;
+        }
+
+        .roi-highlight h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .roi-item .roi-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #34d399;
+        }
+
+        .roi-item .roi-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 50px;
+            height: 50px;
+            background: #6366f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px 24px;
+            flex: 1;
+        }
+
+        .timeline-content .phase-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content .phase-weeks {
+            font-size: 0.8rem;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content .phase-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ── Feature Grid ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: #c7d2fe;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
+        }
+
+        .feature-card .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card .feature-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-card .feature-desc {
+            font-size: 0.88rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ── Security Grid ── */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .security-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 16px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .security-item .check {
+            color: #22c55e;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .security-item .security-text {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .security-item .security-text strong {
+            display: block;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        /* ── Info Request ── */
+        .info-section {
+            background: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .info-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            background: #f8fafc;
+        }
+
+        .info-card .info-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #6366f1;
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card .info-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .info-card .info-desc {
+            font-size: 0.88rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+
+        .info-card ul li {
+            font-size: 0.88rem;
+            color: #64748b;
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .info-card ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #cbd5e1;
+        }
+
+        /* ── Next Steps ── */
+        .next-steps {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .next-steps h2 {
+            color: white;
+        }
+
+        .next-steps p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .steps-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .next-step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 28px;
+            flex: 1;
+            min-width: 200px;
+            max-width: 260px;
+        }
+
+        .next-step-card .step-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #6366f1;
+            margin-bottom: 8px;
+        }
+
+        .next-step-card .step-action {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .next-step-card .step-who {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* ── Comparison ── */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .comparison-card {
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .comparison-card.before {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .comparison-card.after {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .comparison-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .comparison-card.before h4 { color: #dc2626; }
+        .comparison-card.after h4 { color: #16a34a; }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-card ul li {
+            padding: 6px 0;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 24px 50px; }
+            .hero h1 { font-size: 2rem; }
+            .container { padding: 0 24px; }
+            section { padding: 60px 0; }
+            .flow { flex-direction: column; gap: 0; }
+            .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+            .comparison { grid-template-columns: 1fr; }
+            .roi-highlight { padding: 32px 24px; }
+            .roi-grid { grid-template-columns: 1fr; gap: 24px; }
+            .steps-row { flex-direction: column; align-items: center; }
+            h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>SOA Automation Platform</h1>
+            <p class="subtitle">Intelligent Statement of Advice Generation for Insurance Brokerages</p>
+            <span class="tag">Proposal &mdash; March 2026</span>
+        </div>
+    </div>
+
+    <!-- Overview -->
+    <section>
+        <div class="container">
+            <div class="section-label">The Problem</div>
+            <h2>SOA production is your biggest admin bottleneck</h2>
+            <p>Your team spends hours writing Statements of Advice &mdash; pulling data from Trail, researching products, drafting recommendations, formatting documents, and checking compliance.</p>
+            <p>We're building a system that connects directly to your Trail CRM, understands your client's situation, and produces a <strong>complete, compliance-ready SOA draft in minutes</strong> &mdash; not hours. Your advisers review, refine, and approve. That's it.</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section>
+        <div class="container">
+            <div class="section-label">Process</div>
+            <h2>How it works</h2>
+
+            <div class="flow">
+                <div class="flow-step">
+                    <div class="icon">&#128194;</div>
+                    <div class="label">Trail CRM</div>
+                    <div class="desc">Client data, fact find, financials, existing policies</div>
+                </div>
+                <div class="flow-arrow">&#8594;</div>
+                <div class="flow-step">
+                    <div class="icon">&#9881;&#65039;</div>
+                    <div class="label">SOA Engine</div>
+                    <div class="desc">AI analyses needs, matches products, generates document</div>
+                </div>
+                <div class="flow-arrow">&#8594;</div>
+                <div class="flow-step">
+                    <div class="icon">&#128221;</div>
+                    <div class="label">Adviser Review</div>
+                    <div class="desc">Edit, adjust, and approve the draft SOA</div>
+                </div>
+                <div class="flow-arrow">&#8594;</div>
+                <div class="flow-step">
+                    <div class="icon">&#10004;&#65039;</div>
+                    <div class="label">Final SOA</div>
+                    <div class="desc">Branded PDF exported and saved back to Trail</div>
+                </div>
+            </div>
+
+            <h3>Step by step</h3>
+            <table>
+                <thead>
+                    <tr><th>Step</th><th>What Happens</th><th>Time</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1. Trigger</td><td>Adviser selects a client and clicks "Generate SOA"</td><td>10 sec</td></tr>
+                    <tr><td>2. Data Pull</td><td>System pulls fact find, financials, policies, and dependents from Trail</td><td>~5 sec</td></tr>
+                    <tr><td>3. Analysis</td><td>AI calculates cover needs, identifies gaps, assesses priorities</td><td>~15 sec</td></tr>
+                    <tr><td>4. Product Match</td><td>Searches NZ insurer database &mdash; compares premiums, features, exclusions</td><td>~10 sec</td></tr>
+                    <tr><td>5. SOA Draft</td><td>Full document generated with recommendations, reasoning, and compliance sections</td><td>~30 sec</td></tr>
+                    <tr><td>6. Adviser Review</td><td>Adviser reviews draft, edits sections, adds notes</td><td>15-30 min</td></tr>
+                    <tr><td>7. Finalise</td><td>Approved SOA exported as branded PDF, saved to Trail</td><td>10 sec</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Before / After -->
+    <section>
+        <div class="container">
+            <div class="section-label">Impact</div>
+            <h2>What changes for your team</h2>
+
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <h4>Before</h4>
+                    <ul>
+                        <li>3&ndash;5 hours per SOA</li>
+                        <li>Manual data entry from Trail</li>
+                        <li>Product research across insurer websites</li>
+                        <li>Formatting and compliance checking by hand</li>
+                        <li>Full-time salary dedicated to SOA writing</li>
+                    </ul>
+                </div>
+                <div class="comparison-card after">
+                    <h4>After</h4>
+                    <ul>
+                        <li>~30 minutes per SOA (review only)</li>
+                        <li>Auto-pulled from Trail API</li>
+                        <li>Pre-loaded product database</li>
+                        <li>Automated compliance checks</li>
+                        <li>Staff redeployed to higher-value work</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOA Sections -->
+    <section>
+        <div class="container">
+            <div class="section-label">Compliance</div>
+            <h2>What's in every SOA</h2>
+            <p>Every generated document includes all FMA-required sections, professionally formatted with your company branding.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Section</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Scope of Advice</td><td>What the client asked for and what advice this document covers</td></tr>
+                    <tr><td>Client Objectives</td><td>Goals, priorities, and concerns in the client's own words</td></tr>
+                    <tr><td>Current Situation</td><td>Income, assets, liabilities, dependents, existing cover &mdash; pulled from Trail</td></tr>
+                    <tr><td>Needs Analysis</td><td>Calculated cover requirements: life, trauma, TPD, income protection, medical</td></tr>
+                    <tr><td>Gap Analysis</td><td>Current cover vs recommended cover &mdash; clear visual comparison</td></tr>
+                    <tr><td>Recommendations</td><td>Specific products recommended with clear reasoning for each choice</td></tr>
+                    <tr><td>Alternatives Considered</td><td>Products assessed but not recommended, and why</td></tr>
+                    <tr><td>Replacement Analysis</td><td>If replacing existing cover &mdash; comparison, risks, and justification</td></tr>
+                    <tr><td>Risks &amp; Limitations</td><td>Exclusions, stand-down periods, and limitations</td></tr>
+                    <tr><td>Fee &amp; Commission</td><td>Full transparency on adviser remuneration</td></tr>
+                    <tr><td>Adviser Disclosure</td><td>Licence details, complaints process, regulatory information</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ROI -->
+    <section>
+        <div class="container">
+            <div class="section-label">Return on Investment</div>
+            <h2>The numbers</h2>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">85%</div>
+                    <div class="unit">Time Reduction</div>
+                    <div class="context">Per SOA produced</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">650+</div>
+                    <div class="unit">Hours Saved / Year</div>
+                    <div class="context">Conservative estimate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">3-5</div>
+                    <div class="unit">Month Payback</div>
+                    <div class="context">Full ROI on build cost</div>
+                </div>
+            </div>
+
+            <h3>Hours breakdown</h3>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>Current</th><th>With Automation</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Time per SOA</td><td>3&ndash;5 hours</td><td>~30 minutes</td></tr>
+                    <tr><td>SOAs per week</td><td>5&ndash;8</td><td>5&ndash;8</td></tr>
+                    <tr><td>Weekly hours on SOAs</td><td>15&ndash;40 hrs</td><td>2.5&ndash;4 hrs</td></tr>
+                    <tr><td>Annual hours on SOAs</td><td>780&ndash;2,080 hrs</td><td>130&ndash;208 hrs</td></tr>
+                    <tr><td>Hours saved per year</td><td>&mdash;</td><td><strong>650&ndash;1,870 hrs</strong></td></tr>
+                </tbody>
+            </table>
+
+            <div class="roi-highlight">
+                <h3>Cost savings</h3>
+                <p style="color: #94a3b8; max-width: none;">Assuming a full-time employee dedicated primarily to SOA production at $65,000&ndash;$85,000/year:</p>
+
+                <div class="roi-grid">
+                    <div class="roi-item">
+                        <div class="roi-number">$18&ndash;22k</div>
+                        <div class="roi-label">One-off platform build</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-number">$750/mo</div>
+                        <div class="roi-label">Ongoing support &amp; maintenance</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-number">$34&ndash;54k</div>
+                        <div class="roi-label">Year 1 net saving</div>
+                    </div>
+                    <div class="roi-item">
+                        <div class="roi-number">$56&ndash;76k</div>
+                        <div class="roi-label">Year 2+ annual saving</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Beyond cost savings</h3>
+            <table>
+                <thead>
+                    <tr><th>Benefit</th><th>Impact</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Faster Turnaround</td><td>Clients receive their SOA same-day instead of waiting days</td></tr>
+                    <tr><td>Consistency</td><td>Every SOA follows the same high standard &mdash; no variance between writers</td></tr>
+                    <tr><td>Compliance Confidence</td><td>Automated checks mean nothing gets missed before FMA audits</td></tr>
+                    <tr><td>Scalability</td><td>Take on more clients without hiring more admin staff</td></tr>
+                    <tr><td>Staff Redeployment</td><td>Free up your team for client relationships and business development</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+        <div class="container">
+            <div class="section-label">Platform</div>
+            <h2>Features</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128279;</div>
+                    <div class="feature-title">Trail CRM Integration</div>
+                    <div class="feature-desc">Direct API connection &mdash; pulls client data automatically, pushes completed SOAs back to client profiles.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#129302;</div>
+                    <div class="feature-title">AI-Powered Generation</div>
+                    <div class="feature-desc">Advanced AI analyses situations, generates personalised advice reasoning, and drafts complete SOA documents.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128202;</div>
+                    <div class="feature-title">NZ Product Database</div>
+                    <div class="feature-desc">Insurance products from major NZ insurers &mdash; premiums, features, and exclusions, all searchable and comparable.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128187;</div>
+                    <div class="feature-title">Adviser Dashboard</div>
+                    <div class="feature-desc">Clean web interface to review, edit, and approve SOA drafts before they go to clients.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128737;&#65039;</div>
+                    <div class="feature-title">Compliance Engine</div>
+                    <div class="feature-desc">Validates every SOA against FMA requirements before finalisation. Nothing slips through.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128196;</div>
+                    <div class="feature-title">Branded PDF Export</div>
+                    <div class="feature-desc">Professional documents matching your company branding &mdash; logo, colours, fonts, layout.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128270;</div>
+                    <div class="feature-title">Full Audit Trail</div>
+                    <div class="feature-desc">Every generated document logged &mdash; who created it, when, and what was changed. FMA audit-ready.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128274;</div>
+                    <div class="feature-title">Role-Based Access</div>
+                    <div class="feature-desc">Advisers, paraplanners, and admins each see only what they need. Secure by default.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section>
+        <div class="container">
+            <div class="section-label">Security</div>
+            <h2>Data privacy &amp; security</h2>
+            <p>Insurance SOAs contain highly sensitive personal information. Here's how we protect it.</p>
+
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>NZ Privacy Act 2020</strong>Fully compliant &mdash; data used only for its stated purpose</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>Encryption</strong>AES-256 at rest, TLS 1.3 in transit</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>AI Processing</strong>Client details anonymised before AI processing. No data stored by AI provider.</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>Access Control</strong>Role-based permissions &mdash; only authorised users access client data</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>Audit Logging</strong>Every action logged with timestamp and user &mdash; FMA audit-ready</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>7-Year Retention</strong>SOA records stored as required by FMA regulations</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>Client Consent</strong>Clause added to engagement agreement covering AI-assisted advice</div>
+                </div>
+                <div class="security-item">
+                    <div class="check">&#10003;</div>
+                    <div class="security-text"><strong>NZ/AU Hosting</strong>Secure cloud infrastructure with regional data residency</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section>
+        <div class="container">
+            <div class="section-label">Timeline</div>
+            <h2>Build phases</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content">
+                        <div class="phase-title">Foundation</div>
+                        <div class="phase-weeks">Weeks 1&ndash;2</div>
+                        <div class="phase-desc">Trail API integration, client data sync, database setup, authentication.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content">
+                        <div class="phase-title">SOA Engine</div>
+                        <div class="phase-weeks">Weeks 3&ndash;5</div>
+                        <div class="phase-desc">Needs analysis calculator, product database, AI recommendation engine, document generator, compliance validation.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content">
+                        <div class="phase-title">Dashboard &amp; Polish</div>
+                        <div class="phase-weeks">Weeks 6&ndash;7</div>
+                        <div class="phase-desc">Adviser review interface, branding, PDF export, push SOAs back to Trail.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-content">
+                        <div class="phase-title">Launch</div>
+                        <div class="phase-weeks">Week 8</div>
+                        <div class="phase-desc">Testing with real client scenarios, team training, go live.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Need -->
+    <section class="info-section">
+        <div class="container">
+            <div class="section-label">Your Input</div>
+            <h2>What we need from you</h2>
+            <p>To build this right, we need a few things upfront.</p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-num">1</div>
+                    <div class="info-title">Your Current Process</div>
+                    <div class="info-desc">Walk us through how your team produces an SOA today:</div>
+                    <ul>
+                        <li>Step-by-step flow from start to finish</li>
+                        <li>Where are the biggest time sinks?</li>
+                        <li>What happens in Trail vs outside Trail?</li>
+                        <li>Which steps must stay manual?</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="info-num">2</div>
+                    <div class="info-title">Sample SOA Documents</div>
+                    <div class="info-desc">2&ndash;3 completed SOAs (names redacted) so we can match:</div>
+                    <ul>
+                        <li>Document structure and sections</li>
+                        <li>Tone and language style</li>
+                        <li>Branding (logo, colours, fonts)</li>
+                        <li>Any custom sections</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="info-num">3</div>
+                    <div class="info-title">Insurer Panel</div>
+                    <div class="info-desc">Which insurers do you work with most? We'll load these first:</div>
+                    <ul>
+                        <li>AIA, Partners Life, Fidelity Life</li>
+                        <li>Asteron Life, Cigna/Chubb, nib</li>
+                        <li>Any others?</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="info-num">4</div>
+                    <div class="info-title">Trail API Access</div>
+                    <div class="info-desc">Email <strong>farran@gettrail.com</strong> to request API access. Mention you're building an internal automation tool connecting via their official API.</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-num">5</div>
+                    <div class="info-title">Team Details</div>
+                    <div class="info-desc">Help us scope access correctly:</div>
+                    <ul>
+                        <li>How many advisers will use this?</li>
+                        <li>Do paraplanners need access?</li>
+                        <li>Internal sign-off process?</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="info-num">6</div>
+                    <div class="info-title">Edge Cases</div>
+                    <div class="info-desc">So we handle everything correctly:</div>
+                    <ul>
+                        <li>Policy replacements (switching insurers)?</li>
+                        <li>Personal only, or business insurance too?</li>
+                        <li>Trusts, business owners, partnerships?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <div class="next-steps">
+        <div class="container">
+            <div class="section-label" style="color: #6366f1;">Getting Started</div>
+            <h2>Next steps</h2>
+            <p>Here's what happens from here.</p>
+
+            <div class="steps-row">
+                <div class="next-step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-action">Send through the info above</div>
+                    <div class="step-who">Mat</div>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-action">Request Trail API access</div>
+                    <div class="step-who">Mat &rarr; farran@gettrail.com</div>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-action">Confirm scope &amp; pricing</div>
+                    <div class="step-who">Both</div>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-num">04</div>
+                    <div class="step-action">Build begins</div>
+                    <div class="step-who">Benji</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Built by Benji McCarthy &mdash; 2026
+    </footer>
+
+</body>
+</html>

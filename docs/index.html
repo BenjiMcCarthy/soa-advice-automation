@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOA Automation Platform — Proposal</title>
+    <title>SOA Automation Platform &mdash; Proposal for Mat</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -145,7 +145,7 @@
             border-radius: 16px;
             padding: 28px 24px;
             text-align: center;
-            min-width: 180px;
+            min-width: 160px;
             flex: 1;
             transition: all 0.2s;
         }
@@ -489,7 +489,7 @@
         }
 
         .info-card ul li::before {
-            content: '—';
+            content: '\2014';
             position: absolute;
             left: 0;
             color: #cbd5e1;
@@ -603,6 +603,152 @@
             color: #475569;
         }
 
+        /* ── Option Cards ── */
+        .option-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .option-card {
+            border-radius: 20px;
+            padding: 36px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .option-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .option-card.recommended {
+            border-color: #6366f1;
+        }
+
+        .option-card .option-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .option-card .option-badge.a {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .option-card .option-badge.b {
+            background: #eef2ff;
+            color: #6366f1;
+        }
+
+        .option-card .option-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .option-card .option-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-card .option-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option-card .option-steps li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 0.9rem;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .option-card .option-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .option-card .option-steps li .step-icon {
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .option-card .option-time {
+            margin-top: 20px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .option-card .option-time strong {
+            color: #6366f1;
+        }
+
+        /* ── Lead Reactivation ── */
+        .lead-section {
+            background: #f8fafc;
+        }
+
+        .lead-highlight {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 32px 0;
+        }
+
+        .lead-highlight .lead-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .lead-highlight .lead-item {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .lead-highlight .lead-item .lead-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6366f1;
+            margin-bottom: 8px;
+        }
+
+        .lead-highlight .lead-item .lead-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .lead-highlight .lead-item .lead-desc {
+            font-size: 0.88rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .hero { padding: 60px 24px 50px; }
@@ -612,9 +758,11 @@
             .flow { flex-direction: column; gap: 0; }
             .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
             .comparison { grid-template-columns: 1fr; }
+            .option-cards { grid-template-columns: 1fr; }
             .roi-highlight { padding: 32px 24px; }
             .roi-grid { grid-template-columns: 1fr; gap: 24px; }
             .steps-row { flex-direction: column; align-items: center; }
+            .lead-highlight .lead-grid { grid-template-columns: 1fr; }
             h2 { font-size: 1.6rem; }
         }
     </style>
@@ -625,66 +773,137 @@
     <div class="hero">
         <div class="hero-content">
             <h1>SOA Automation Platform</h1>
-            <p class="subtitle">Intelligent Statement of Advice Generation for Insurance Brokerages</p>
+            <p class="subtitle">Generate compliance-ready Statements of Advice in under 60 seconds</p>
             <span class="tag">Proposal &mdash; March 2026</span>
         </div>
     </div>
 
-    <!-- Overview -->
+    <!-- The Problem -->
     <section>
         <div class="container">
             <div class="section-label">The Problem</div>
-            <h2>SOA production is your biggest admin bottleneck</h2>
-            <p>Your team spends hours writing Statements of Advice &mdash; pulling data from Trail, researching products, drafting recommendations, formatting documents, and checking compliance.</p>
-            <p>We're building a system that connects directly to your Trail CRM, understands your client's situation, and produces a <strong>complete, compliance-ready SOA draft in minutes</strong> &mdash; not hours. Your advisers review, refine, and approve. That's it.</p>
+            <h2>SOAs are your biggest bottleneck</h2>
+            <p>Right now, after every client call you send a voice note to Tama explaining the situation &mdash; what the client has, what you're recommending, which company and why. Tama writes it all up into a Statement of Advice. That process takes hours, sometimes days.</p>
+            <p>Meanwhile, the client's sitting there waiting. You can't submit the application until they've approved the SOA. Clients go cold. Deals stall. And you're paying a full salary for a role that's mostly data entry and templated writing.</p>
+            <p>We're going to fix that. <strong>The AI takes over Tama's role entirely</strong> &mdash; it listens to your instructions, pulls the data from Trail, grabs the comparisons from Quote Monster, and produces a complete, branded SOA document in under 60 seconds.</p>
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- Two Options -->
     <section>
         <div class="container">
-            <div class="section-label">Process</div>
-            <h2>How it works</h2>
+            <div class="section-label">Two Approaches</div>
+            <h2>How you want to use it</h2>
+            <p>We can set this up in two ways depending on how you want to work. Both produce the same SOA output &mdash; the difference is how the input goes in.</p>
+
+            <div class="option-cards">
+                <div class="option-card">
+                    <span class="option-badge a">Option A</span>
+                    <div class="option-title">Voice Note</div>
+                    <div class="option-desc">Same workflow you already use with Tama. After a client call, you record a voice note explaining the situation. Instead of Tama picking it up hours later, the AI processes it immediately.</div>
+                    <ul class="option-steps">
+                        <li><span class="step-icon">1.</span> You finish a client call</li>
+                        <li><span class="step-icon">2.</span> Record a voice note with your recommendation</li>
+                        <li><span class="step-icon">3.</span> AI transcribes and extracts the details</li>
+                        <li><span class="step-icon">4.</span> Pulls verified data from Trail + Quote Monster</li>
+                        <li><span class="step-icon">5.</span> Generates the full SOA document</li>
+                        <li><span class="step-icon">6.</span> You review and send</li>
+                    </ul>
+                    <div class="option-time">SOA ready in <strong>~60 seconds</strong> after you finish the voice note</div>
+                </div>
+
+                <div class="option-card recommended">
+                    <span class="option-badge b">Option B &mdash; Recommended</span>
+                    <div class="option-title">Live Call Transcription</div>
+                    <div class="option-desc">Your client call is transcribed in real time. The moment you hang up, the AI already has everything it needs. No voice note required. The SOA is generated while Tess is still on the phone doing the application.</div>
+                    <ul class="option-steps">
+                        <li><span class="step-icon">1.</span> You're on a call with the client (transcription running)</li>
+                        <li><span class="step-icon">2.</span> You discuss their situation, recommend cover, explain why</li>
+                        <li><span class="step-icon">3.</span> Call ends &mdash; AI has the full transcript</li>
+                        <li><span class="step-icon">4.</span> Pulls verified data from Trail + Quote Monster</li>
+                        <li><span class="step-icon">5.</span> SOA generates while Tess does the application</li>
+                        <li><span class="step-icon">6.</span> Client comes back from application, SOA is in their inbox</li>
+                    </ul>
+                    <div class="option-time">One call. One signature. <strong>Closed.</strong></div>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px;"><strong>Our recommendation:</strong> We start with Option A to get you live fast and dial in the SOA quality. Then we upgrade to Option B once you're happy with the output. The SOA engine is the same for both &mdash; the only difference is how the input goes in.</p>
+        </div>
+    </section>
+
+    <!-- How It Works (Technical Flow) -->
+    <section>
+        <div class="container">
+            <div class="section-label">Under the Hood</div>
+            <h2>How everything connects</h2>
+            <p>Three data sources feed into the SOA engine. Each one plays a specific role.</p>
 
             <div class="flow">
                 <div class="flow-step">
+                    <div class="icon">&#127908;</div>
+                    <div class="label">Your Input</div>
+                    <div class="desc">Voice note or call transcript &mdash; what you're recommending and why</div>
+                </div>
+                <div class="flow-arrow">+</div>
+                <div class="flow-step">
                     <div class="icon">&#128194;</div>
                     <div class="label">Trail CRM</div>
-                    <div class="desc">Client data, fact find, financials, existing policies</div>
+                    <div class="desc">Verified client data &mdash; fact find, financials, existing policies</div>
                 </div>
-                <div class="flow-arrow">&#8594;</div>
+                <div class="flow-arrow">+</div>
                 <div class="flow-step">
+                    <div class="icon">&#128202;</div>
+                    <div class="label">Quote Monster</div>
+                    <div class="desc">Premium comparisons, product ratings, insurer research</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: -20px 0 20px;">
+                <div class="flow-arrow" style="font-size: 2rem;">&#8595;</div>
+            </div>
+
+            <div class="flow">
+                <div class="flow-step" style="border-color: #6366f1; background: #fafafe;">
                     <div class="icon">&#9881;&#65039;</div>
-                    <div class="label">SOA Engine</div>
-                    <div class="desc">AI analyses needs, matches products, generates document</div>
+                    <div class="label">SOA Engine (AI)</div>
+                    <div class="desc">Merges your instructions with verified data, generates the full document</div>
                 </div>
                 <div class="flow-arrow">&#8594;</div>
                 <div class="flow-step">
                     <div class="icon">&#128221;</div>
-                    <div class="label">Adviser Review</div>
-                    <div class="desc">Edit, adjust, and approve the draft SOA</div>
+                    <div class="label">Quick Review</div>
+                    <div class="desc">You glance over it, tweak if needed</div>
                 </div>
                 <div class="flow-arrow">&#8594;</div>
                 <div class="flow-step">
                     <div class="icon">&#10004;&#65039;</div>
-                    <div class="label">Final SOA</div>
-                    <div class="desc">Branded PDF exported and saved back to Trail</div>
+                    <div class="label">Send &amp; Save</div>
+                    <div class="desc">PDF to client, saved back to Trail</div>
                 </div>
             </div>
 
-            <h3>Step by step</h3>
+            <h3>Why all three sources matter</h3>
             <table>
                 <thead>
-                    <tr><th>Step</th><th>What Happens</th><th>Time</th></tr>
+                    <tr><th>Source</th><th>What It Provides</th><th>Why It Matters</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1. Trigger</td><td>Adviser selects a client and clicks "Generate SOA"</td><td>10 sec</td></tr>
-                    <tr><td>2. Data Pull</td><td>System pulls fact find, financials, policies, and dependents from Trail</td><td>~5 sec</td></tr>
-                    <tr><td>3. Analysis</td><td>AI calculates cover needs, identifies gaps, assesses priorities</td><td>~15 sec</td></tr>
-                    <tr><td>4. Product Match</td><td>Searches NZ insurer database &mdash; compares premiums, features, exclusions</td><td>~10 sec</td></tr>
-                    <tr><td>5. SOA Draft</td><td>Full document generated with recommendations, reasoning, and compliance sections</td><td>~30 sec</td></tr>
-                    <tr><td>6. Adviser Review</td><td>Adviser reviews draft, edits sections, adds notes</td><td>15-30 min</td></tr>
-                    <tr><td>7. Finalise</td><td>Approved SOA exported as branded PDF, saved to Trail</td><td>10 sec</td></tr>
+                    <tr>
+                        <td>Your Voice / Transcript</td>
+                        <td>Your recommendation, reasoning, which company, which cover levels</td>
+                        <td>This is the adviser's judgement &mdash; the AI can't make this call, only you can</td>
+                    </tr>
+                    <tr>
+                        <td>Trail CRM</td>
+                        <td>Client profile, fact find, financials, dependents, existing policies, policy numbers</td>
+                        <td>Verified data &mdash; not relying on what someone said on a phone call. Exact numbers, exact details.</td>
+                    </tr>
+                    <tr>
+                        <td>Quote Monster</td>
+                        <td>Premium comparisons, product ratings, feature breakdowns, QPR research</td>
+                        <td>The supporting evidence section &mdash; shows why you're recommending AIA over Chubb, backed by independent research</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -694,58 +913,61 @@
     <section>
         <div class="container">
             <div class="section-label">Impact</div>
-            <h2>What changes for your team</h2>
+            <h2>What changes</h2>
 
             <div class="comparison">
                 <div class="comparison-card before">
-                    <h4>Before</h4>
+                    <h4>Today</h4>
                     <ul>
-                        <li>3&ndash;5 hours per SOA</li>
-                        <li>Manual data entry from Trail</li>
-                        <li>Product research across insurer websites</li>
-                        <li>Formatting and compliance checking by hand</li>
-                        <li>Full-time salary dedicated to SOA writing</li>
+                        <li>You finish a client call</li>
+                        <li>Send a voice note to Tama</li>
+                        <li>Wait hours or days for the SOA</li>
+                        <li>Client goes cold, application stuck</li>
+                        <li>Chase up, follow up, chase up again</li>
+                        <li>Full-time salary for SOA production</li>
                     </ul>
                 </div>
                 <div class="comparison-card after">
-                    <h4>After</h4>
+                    <h4>With Automation</h4>
                     <ul>
-                        <li>~30 minutes per SOA (review only)</li>
-                        <li>Auto-pulled from Trail API</li>
-                        <li>Pre-loaded product database</li>
-                        <li>Automated compliance checks</li>
-                        <li>Staff redeployed to higher-value work</li>
+                        <li>You finish a client call</li>
+                        <li>SOA generates in 60 seconds</li>
+                        <li>Client gets it while they're still at their desk</li>
+                        <li>Approve and submit in the same session</li>
+                        <li>No chasing, no waiting, no lost deals</li>
+                        <li>Tama redeployed to higher-value work</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOA Sections -->
+    <!-- What's in the SOA -->
     <section>
         <div class="container">
-            <div class="section-label">Compliance</div>
+            <div class="section-label">The Document</div>
             <h2>What's in every SOA</h2>
-            <p>Every generated document includes all FMA-required sections, professionally formatted with your company branding.</p>
+            <p>Every generated document matches your existing format and includes all FMA-required sections, professionally formatted with your company branding.</p>
 
             <table>
                 <thead>
                     <tr><th>Section</th><th>Description</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Scope of Advice</td><td>What the client asked for and what advice this document covers</td></tr>
-                    <tr><td>Client Objectives</td><td>Goals, priorities, and concerns in the client's own words</td></tr>
-                    <tr><td>Current Situation</td><td>Income, assets, liabilities, dependents, existing cover &mdash; pulled from Trail</td></tr>
-                    <tr><td>Needs Analysis</td><td>Calculated cover requirements: life, trauma, TPD, income protection, medical</td></tr>
-                    <tr><td>Gap Analysis</td><td>Current cover vs recommended cover &mdash; clear visual comparison</td></tr>
-                    <tr><td>Recommendations</td><td>Specific products recommended with clear reasoning for each choice</td></tr>
-                    <tr><td>Alternatives Considered</td><td>Products assessed but not recommended, and why</td></tr>
-                    <tr><td>Replacement Analysis</td><td>If replacing existing cover &mdash; comparison, risks, and justification</td></tr>
-                    <tr><td>Risks &amp; Limitations</td><td>Exclusions, stand-down periods, and limitations</td></tr>
-                    <tr><td>Fee &amp; Commission</td><td>Full transparency on adviser remuneration</td></tr>
+                    <tr><td>Nature &amp; Scope of Advice</td><td>What the client asked for and what this advice covers</td></tr>
+                    <tr><td>Client Summary</td><td>Personal details, income, dependents &mdash; pulled from Trail</td></tr>
+                    <tr><td>Existing Insurance Profile</td><td>Current policies, cover levels, premiums, provider</td></tr>
+                    <tr><td>Needs Analysis</td><td>Cover requirements across life, trauma, income protection, medical</td></tr>
+                    <tr><td>Recommendations</td><td>Specific products, cover levels, premiums &mdash; with your reasoning for each</td></tr>
+                    <tr><td>Replacement Analysis</td><td>If switching companies &mdash; comparison, key differences, risks of replacing</td></tr>
+                    <tr><td>Supporting Research</td><td>Quote Monster comparisons, QPR ratings, product feature breakdowns</td></tr>
+                    <tr><td>Risks &amp; Limitations</td><td>Exclusions, stand-down periods, anything the client needs to know</td></tr>
+                    <tr><td>Fee &amp; Commission Disclosure</td><td>Templated per insurer &mdash; AIA, Chubb, nib, Partners, etc.</td></tr>
                     <tr><td>Adviser Disclosure</td><td>Licence details, complaints process, regulatory information</td></tr>
                 </tbody>
             </table>
+
+            <p>All formatted with your company branding &mdash; logo, colours, fonts, professional layout. The output matches what you're already sending to clients.</p>
         </div>
     </section>
 
@@ -757,9 +979,9 @@
 
             <div class="stats">
                 <div class="stat-card">
-                    <div class="number">85%</div>
-                    <div class="unit">Time Reduction</div>
-                    <div class="context">Per SOA produced</div>
+                    <div class="number">60s</div>
+                    <div class="unit">SOA Generation</div>
+                    <div class="context">vs hours/days currently</div>
                 </div>
                 <div class="stat-card">
                     <div class="number">650+</div>
@@ -767,7 +989,7 @@
                     <div class="context">Conservative estimate</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">3-5</div>
+                    <div class="number">3&ndash;5</div>
                     <div class="unit">Month Payback</div>
                     <div class="context">Full ROI on build cost</div>
                 </div>
@@ -779,11 +1001,11 @@
                     <tr><th>Metric</th><th>Current</th><th>With Automation</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Time per SOA</td><td>3&ndash;5 hours</td><td>~30 minutes</td></tr>
-                    <tr><td>SOAs per week</td><td>5&ndash;8</td><td>5&ndash;8</td></tr>
-                    <tr><td>Weekly hours on SOAs</td><td>15&ndash;40 hrs</td><td>2.5&ndash;4 hrs</td></tr>
-                    <tr><td>Annual hours on SOAs</td><td>780&ndash;2,080 hrs</td><td>130&ndash;208 hrs</td></tr>
-                    <tr><td>Hours saved per year</td><td>&mdash;</td><td><strong>650&ndash;1,870 hrs</strong></td></tr>
+                    <tr><td>Time per SOA</td><td>3&ndash;5 hours</td><td>~1 minute generation + quick review</td></tr>
+                    <tr><td>SOAs per week</td><td>5&ndash;8</td><td>5&ndash;8 (or more &mdash; no longer capacity-limited)</td></tr>
+                    <tr><td>Weekly hours on SOAs</td><td>15&ndash;40 hrs</td><td>~1&ndash;2 hrs (review only)</td></tr>
+                    <tr><td>Annual hours on SOAs</td><td>780&ndash;2,080 hrs</td><td>50&ndash;100 hrs</td></tr>
+                    <tr><td>Hours saved per year</td><td>&mdash;</td><td><strong>730&ndash;1,980 hrs</strong></td></tr>
                 </tbody>
             </table>
 
@@ -817,11 +1039,12 @@
                     <tr><th>Benefit</th><th>Impact</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Faster Turnaround</td><td>Clients receive their SOA same-day instead of waiting days</td></tr>
-                    <tr><td>Consistency</td><td>Every SOA follows the same high standard &mdash; no variance between writers</td></tr>
+                    <tr><td>One-Call Close</td><td>Client gets the SOA while they're still warm &mdash; no "I'll get back to you in a couple of days"</td></tr>
+                    <tr><td>No Lost Deals</td><td>Applications don't sit waiting on SOA approval. Strike while the iron's hot.</td></tr>
+                    <tr><td>Consistency</td><td>Every SOA follows the same high standard &mdash; no variance, no missed sections</td></tr>
                     <tr><td>Compliance Confidence</td><td>Automated checks mean nothing gets missed before FMA audits</td></tr>
-                    <tr><td>Scalability</td><td>Take on more clients without hiring more admin staff</td></tr>
-                    <tr><td>Staff Redeployment</td><td>Free up your team for client relationships and business development</td></tr>
+                    <tr><td>Scalability</td><td>Take on more clients without hiring more staff &mdash; capacity is no longer the bottleneck</td></tr>
+                    <tr><td>Staff Redeployment</td><td>Tama can focus on client relationships, renewals, or business development</td></tr>
                 </tbody>
             </table>
         </div>
@@ -831,48 +1054,48 @@
     <section>
         <div class="container">
             <div class="section-label">Platform</div>
-            <h2>Features</h2>
+            <h2>What's included</h2>
 
             <div class="feature-grid">
                 <div class="feature-card">
+                    <div class="feature-icon">&#127908;</div>
+                    <div class="feature-title">Voice &amp; Transcript Input</div>
+                    <div class="feature-desc">Send a voice note or let the live call transcription handle it. The AI extracts client details, cover levels, and your reasoning automatically.</div>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">&#128279;</div>
                     <div class="feature-title">Trail CRM Integration</div>
-                    <div class="feature-desc">Direct API connection &mdash; pulls client data automatically, pushes completed SOAs back to client profiles.</div>
+                    <div class="feature-desc">Direct API connection &mdash; pulls client data automatically and pushes completed SOAs back to the client's profile.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128202;</div>
+                    <div class="feature-title">Quote Monster Integration</div>
+                    <div class="feature-desc">Pulls in your premium comparisons, product ratings, and QPR research as supporting evidence for the SOA.</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#129302;</div>
                     <div class="feature-title">AI-Powered Generation</div>
-                    <div class="feature-desc">Advanced AI analyses situations, generates personalised advice reasoning, and drafts complete SOA documents.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128202;</div>
-                    <div class="feature-title">NZ Product Database</div>
-                    <div class="feature-desc">Insurance products from major NZ insurers &mdash; premiums, features, and exclusions, all searchable and comparable.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128187;</div>
-                    <div class="feature-title">Adviser Dashboard</div>
-                    <div class="feature-desc">Clean web interface to review, edit, and approve SOA drafts before they go to clients.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128737;&#65039;</div>
-                    <div class="feature-title">Compliance Engine</div>
-                    <div class="feature-desc">Validates every SOA against FMA requirements before finalisation. Nothing slips through.</div>
+                    <div class="feature-desc">Advanced AI merges your instructions with verified data to produce a complete, personalised SOA document with full reasoning.</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#128196;</div>
                     <div class="feature-title">Branded PDF Export</div>
-                    <div class="feature-desc">Professional documents matching your company branding &mdash; logo, colours, fonts, layout.</div>
+                    <div class="feature-desc">Professional documents matching your company branding &mdash; logo, colours, fonts. Matches what you're already sending to clients.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128187;</div>
+                    <div class="feature-title">Review Dashboard</div>
+                    <div class="feature-desc">Clean web interface to review the generated SOA, make quick edits, and send directly to the client via email.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128737;&#65039;</div>
+                    <div class="feature-title">Compliance Engine</div>
+                    <div class="feature-desc">Validates every SOA against FMA requirements. Commission disclosures auto-populated per insurer. Nothing slips through.</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#128270;</div>
                     <div class="feature-title">Full Audit Trail</div>
-                    <div class="feature-desc">Every generated document logged &mdash; who created it, when, and what was changed. FMA audit-ready.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128274;</div>
-                    <div class="feature-title">Role-Based Access</div>
-                    <div class="feature-desc">Advisers, paraplanners, and admins each see only what they need. Secure by default.</div>
+                    <div class="feature-desc">Every generated document logged &mdash; who created it, when, what was changed. FMA audit-ready from day one.</div>
                 </div>
             </div>
         </div>
@@ -910,19 +1133,11 @@
                     <div class="check">&#10003;</div>
                     <div class="security-text"><strong>7-Year Retention</strong>SOA records stored as required by FMA regulations</div>
                 </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>Client Consent</strong>Clause added to engagement agreement covering AI-assisted advice</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>NZ/AU Hosting</strong>Secure cloud infrastructure with regional data residency</div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline -->
+    <!-- Build Timeline -->
     <section>
         <div class="container">
             <div class="section-label">Timeline</div>
@@ -932,25 +1147,25 @@
                 <div class="timeline-item">
                     <div class="timeline-dot">1</div>
                     <div class="timeline-content">
-                        <div class="phase-title">Foundation</div>
+                        <div class="phase-title">Foundation &amp; Trail Integration</div>
                         <div class="phase-weeks">Weeks 1&ndash;2</div>
-                        <div class="phase-desc">Trail API integration, client data sync, database setup, authentication.</div>
+                        <div class="phase-desc">Trail API connection, client data sync, database setup, authentication. Voice note transcription pipeline.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot">2</div>
                     <div class="timeline-content">
-                        <div class="phase-title">SOA Engine</div>
+                        <div class="phase-title">SOA Engine &amp; Quote Monster</div>
                         <div class="phase-weeks">Weeks 3&ndash;5</div>
-                        <div class="phase-desc">Needs analysis calculator, product database, AI recommendation engine, document generator, compliance validation.</div>
+                        <div class="phase-desc">AI recommendation engine, document generator, Quote Monster integration, compliance validation. Template matching from your existing SOAs.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot">3</div>
                     <div class="timeline-content">
-                        <div class="phase-title">Dashboard &amp; Polish</div>
+                        <div class="phase-title">Dashboard &amp; PDF Export</div>
                         <div class="phase-weeks">Weeks 6&ndash;7</div>
-                        <div class="phase-desc">Adviser review interface, branding, PDF export, push SOAs back to Trail.</div>
+                        <div class="phase-desc">Review interface, branded PDF generation, email sending, push completed SOAs back to Trail. Live call transcription upgrade (Option B).</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -958,77 +1173,70 @@
                     <div class="timeline-content">
                         <div class="phase-title">Launch</div>
                         <div class="phase-weeks">Week 8</div>
-                        <div class="phase-desc">Testing with real client scenarios, team training, go live.</div>
+                        <div class="phase-desc">Testing with real client scenarios, fine-tuning AI output against your existing SOAs, team training, go live.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Lead Reactivation -->
+    <section class="lead-section">
+        <div class="container">
+            <div class="section-label">Lead Reactivation</div>
+            <h2>Put your 1,500+ lapsed leads back to work</h2>
+            <p>Separate to the SOA automation &mdash; you've got a list of old leads and former clients that haven't been contacted in a while. We'll set up an AI agent that works through that list, reaches out, qualifies interest, and books appointments directly into your calendar.</p>
+
+            <div class="lead-highlight">
+                <h3 style="margin-top: 0;">How it works</h3>
+                <p>The AI agent contacts each lead via email or SMS, has a natural conversation to qualify their interest, and books a call with you if they're keen. You just show up to the meeting.</p>
+
+                <div class="lead-grid">
+                    <div class="lead-item">
+                        <div class="lead-label">Setup</div>
+                        <div class="lead-value">$850</div>
+                        <div class="lead-desc">One-off &mdash; agent configuration, messaging, calendar integration</div>
+                    </div>
+                    <div class="lead-item">
+                        <div class="lead-label">Per Booked Appointment</div>
+                        <div class="lead-value">TBD</div>
+                        <div class="lead-desc">You only pay when a qualified lead actually books a call</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>What we need from you</h3>
+            <p>Send through the lapsed leads CSV once you've filtered out your existing clients. We need: name, phone/mobile, email, and any other details you have (previous provider, policy type, etc). The more context, the better the outreach.</p>
+        </div>
+    </section>
+
     <!-- What We Need -->
     <section class="info-section">
         <div class="container">
-            <div class="section-label">Your Input</div>
+            <div class="section-label">To Get Started</div>
             <h2>What we need from you</h2>
-            <p>To build this right, we need a few things upfront.</p>
+            <p>To get the ball rolling, we need a few things from your end.</p>
 
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-num">1</div>
-                    <div class="info-title">Your Current Process</div>
-                    <div class="info-desc">Walk us through how your team produces an SOA today:</div>
-                    <ul>
-                        <li>Step-by-step flow from start to finish</li>
-                        <li>Where are the biggest time sinks?</li>
-                        <li>What happens in Trail vs outside Trail?</li>
-                        <li>Which steps must stay manual?</li>
-                    </ul>
+                    <div class="info-title">2&ndash;3 Completed SOAs</div>
+                    <div class="info-desc">Send through completed SOA documents (client names redacted) so we can match your exact format, tone, structure, and branding.</div>
                 </div>
                 <div class="info-card">
                     <div class="info-num">2</div>
-                    <div class="info-title">Sample SOA Documents</div>
-                    <div class="info-desc">2&ndash;3 completed SOAs (names redacted) so we can match:</div>
-                    <ul>
-                        <li>Document structure and sections</li>
-                        <li>Tone and language style</li>
-                        <li>Branding (logo, colours, fonts)</li>
-                        <li>Any custom sections</li>
-                    </ul>
+                    <div class="info-title">Template Library</div>
+                    <div class="info-desc">Your commission disclosure templates per insurer (AIA, Chubb, nib, Partners, etc.) and any other templated sections you use.</div>
                 </div>
                 <div class="info-card">
                     <div class="info-num">3</div>
-                    <div class="info-title">Insurer Panel</div>
-                    <div class="info-desc">Which insurers do you work with most? We'll load these first:</div>
-                    <ul>
-                        <li>AIA, Partners Life, Fidelity Life</li>
-                        <li>Asteron Life, Cigna/Chubb, nib</li>
-                        <li>Any others?</li>
-                    </ul>
+                    <div class="info-title">Trail API Access</div>
+                    <div class="info-desc">Email <strong>farran@gettrail.com</strong> and let them know you're building an internal automation tool that connects via their official API.</div>
                 </div>
                 <div class="info-card">
                     <div class="info-num">4</div>
-                    <div class="info-title">Trail API Access</div>
-                    <div class="info-desc">Email <strong>farran@gettrail.com</strong> to request API access. Mention you're building an internal automation tool connecting via their official API.</div>
-                </div>
-                <div class="info-card">
-                    <div class="info-num">5</div>
-                    <div class="info-title">Team Details</div>
-                    <div class="info-desc">Help us scope access correctly:</div>
-                    <ul>
-                        <li>How many advisers will use this?</li>
-                        <li>Do paraplanners need access?</li>
-                        <li>Internal sign-off process?</li>
-                    </ul>
-                </div>
-                <div class="info-card">
-                    <div class="info-num">6</div>
-                    <div class="info-title">Edge Cases</div>
-                    <div class="info-desc">So we handle everything correctly:</div>
-                    <ul>
-                        <li>Policy replacements (switching insurers)?</li>
-                        <li>Personal only, or business insurance too?</li>
-                        <li>Trusts, business owners, partnerships?</li>
-                    </ul>
+                    <div class="info-title">Lapsed Leads CSV</div>
+                    <div class="info-desc">Your 1,500+ old leads, filtered for non-current clients. Name, phone, email, and any previous provider/policy info you have.</div>
                 </div>
             </div>
         </div>
@@ -1044,7 +1252,7 @@
             <div class="steps-row">
                 <div class="next-step-card">
                     <div class="step-num">01</div>
-                    <div class="step-action">Send through the info above</div>
+                    <div class="step-action">Send through SOA samples, templates &amp; leads CSV</div>
                     <div class="step-who">Mat</div>
                 </div>
                 <div class="next-step-card">
@@ -1054,7 +1262,7 @@
                 </div>
                 <div class="next-step-card">
                     <div class="step-num">03</div>
-                    <div class="step-action">Confirm scope &amp; pricing</div>
+                    <div class="step-action">Confirm scope &amp; kick off</div>
                     <div class="step-who">Both</div>
                 </div>
                 <div class="next-step-card">

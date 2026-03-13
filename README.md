@@ -1,6 +1,6 @@
 # SOA Automation Platform
 
-### Intelligent Statement of Advice Generation for Insurance Brokerages
+### Generate compliance-ready Statements of Advice in under 60 seconds
 
 ---
 
@@ -8,11 +8,11 @@
 
 ## Overview
 
-Your team spends hours writing Statements of Advice — pulling data from Trail, researching products, drafting recommendations, formatting documents, and checking compliance. It's the single biggest admin bottleneck in your business.
+After every client call, you send a voice note to Tama explaining the situation — what the client has, what you're recommending, which company and why. Tama writes it all up into a Statement of Advice. That process takes hours, sometimes days.
 
-We're building a system that connects directly to your Trail CRM, understands your client's situation, and produces a **complete, compliance-ready SOA draft in minutes** — not hours. Your advisers review, refine, and approve. That's it.
+Meanwhile, the client's sitting there waiting. You can't submit the application until they've approved the SOA. Clients go cold. Deals stall. And you're paying a full salary for a role that's mostly data entry and templated writing.
 
-The person currently dedicated to SOA production gets freed up for higher-value work. Your advisers spend more time advising, less time writing.
+**The AI takes over that role entirely** — it listens to your instructions, pulls the data from Trail, grabs the comparisons from Quote Monster, and produces a complete, branded SOA document in under 60 seconds.
 
 <br>
 
@@ -20,39 +20,94 @@ The person currently dedicated to SOA production gets freed up for higher-value 
 
 <br>
 
-## How It Works
+## Two Approaches
+
+Both produce the same SOA output — the difference is how the input goes in.
 
 <br>
 
-### The Flow
+### Option A — Voice Note
+
+Same workflow you already use with Tama. After a client call, you record a voice note explaining the situation. Instead of Tama picking it up hours later, the AI processes it immediately.
+
+| Step | What Happens |
+|:-----|:-------------|
+| **1** | You finish a client call |
+| **2** | Record a voice note with your recommendation |
+| **3** | AI transcribes and extracts the details |
+| **4** | Pulls verified data from Trail + Quote Monster |
+| **5** | Generates the full SOA document |
+| **6** | You review and send |
+
+**SOA ready in ~60 seconds** after you finish the voice note.
+
+<br>
+
+### Option B — Live Call Transcription (Recommended)
+
+Your client call is transcribed in real time. The moment you hang up, the AI already has everything it needs. No voice note required. The SOA is generated while Tess is still on the phone doing the application.
+
+| Step | What Happens |
+|:-----|:-------------|
+| **1** | You're on a call with the client (transcription running) |
+| **2** | You discuss their situation, recommend cover, explain why |
+| **3** | Call ends — AI has the full transcript |
+| **4** | Pulls verified data from Trail + Quote Monster |
+| **5** | SOA generates while Tess does the application |
+| **6** | Client comes back from application, SOA is in their inbox |
+
+**One call. One signature. Closed.**
+
+<br>
+
+**Our recommendation:** Start with Option A to get live fast and dial in the SOA quality. Then upgrade to Option B once you're happy with the output. The SOA engine is the same for both.
+
+<br>
+
+---
+
+<br>
+
+## How Everything Connects
+
+Three data sources feed into the SOA engine:
 
 ```
-┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐     ┌──────────────┐
-│             │     │                  │     │                 │     │              │
-│  Trail CRM  │────▶│  SOA Engine (AI) │────▶│ Adviser Review  │────▶│  Final SOA   │
-│             │     │                  │     │                 │     │              │
-└─────────────┘     └──────────────────┘     └─────────────────┘     └──────────────┘
-  Client data         Analyses needs           Edit, adjust,          Branded PDF
-  Fact find           Matches products         approve/reject         saved to Trail
-  Financials          Generates SOA
-  Policies            Checks compliance
+┌──────────────────┐   ┌──────────────────┐   ┌──────────────────┐
+│   Your Input     │   │    Trail CRM     │   │  Quote Monster   │
+│                  │   │                  │   │                  │
+│  Voice note or   │   │  Fact find,      │   │  Premium comps,  │
+│  call transcript │   │  financials,     │   │  product ratings │
+│                  │   │  existing cover   │   │  QPR research    │
+└────────┬─────────┘   └────────┬─────────┘   └────────┬─────────┘
+         │                      │                      │
+         └──────────────────────┼──────────────────────┘
+                                │
+                       ┌────────▼─────────┐
+                       │  SOA Engine (AI) │
+                       │                  │
+                       │  Merges your     │
+                       │  instructions    │
+                       │  with verified   │
+                       │  data            │
+                       └────────┬─────────┘
+                                │
+                   ┌────────────┼────────────┐
+                   │                         │
+          ┌────────▼─────────┐     ┌─────────▼────────┐
+          │   Quick Review   │     │   Save to Trail  │
+          │   Branded PDF    │     │   Client record  │
+          │   Send to client │     │   updated        │
+          └──────────────────┘     └──────────────────┘
 ```
 
 <br>
 
-### Step by Step
-
-| Step | What Happens | Time |
-|:-----|:-------------|:-----|
-| **1. Trigger** | Adviser selects a client and clicks "Generate SOA" | 10 sec |
-| **2. Data Pull** | System pulls fact find, financials, existing policies, and dependents from Trail via API | ~5 sec |
-| **3. Analysis** | AI analyses the client's situation — calculates cover needs, identifies gaps, assesses priorities | ~15 sec |
-| **4. Product Match** | Searches NZ insurer product database, compares premiums, features, and exclusions | ~10 sec |
-| **5. SOA Draft** | Full document generated — recommendations, reasoning, alternatives, disclosures, compliance sections | ~30 sec |
-| **6. Adviser Review** | Adviser reviews the draft in a clean web dashboard, edits any section, adds personal notes | 15-30 min |
-| **7. Finalise** | Approved SOA exported as branded PDF and saved back to the client's Trail profile | 10 sec |
-
-**Total: ~30 minutes** (adviser review time) vs 3-5 hours today.
+| Source | What It Provides | Why It Matters |
+|:-------|:-----------------|:---------------|
+| **Your Voice / Transcript** | Your recommendation, reasoning, which company, which cover levels | This is the adviser's judgement — the AI can't make this call, only you can |
+| **Trail CRM** | Client profile, fact find, financials, dependents, existing policies | Verified data — exact numbers, not what someone said on a phone call |
+| **Quote Monster** | Premium comparisons, product ratings, feature breakdowns, QPR research | Supporting evidence — shows why you're recommending one company over another |
 
 <br>
 
@@ -62,21 +117,20 @@ The person currently dedicated to SOA production gets freed up for higher-value 
 
 ## The SOA Document
 
-Every generated SOA includes all FMA-required sections:
+Every generated document matches your existing format and includes all FMA-required sections:
 
 | Section | Description |
 |:--------|:------------|
-| **Scope of Advice** | What the client asked for and what advice covers |
-| **Client Objectives** | Goals, priorities, and concerns in the client's own words |
-| **Current Situation** | Income, assets, liabilities, dependents, existing cover — pulled from Trail |
-| **Needs Analysis** | Calculated cover requirements across life, trauma, TPD, income protection, medical |
-| **Gap Analysis** | Visual comparison of current cover vs recommended cover |
-| **Recommendations** | Specific products recommended with clear reasoning for each |
-| **Alternatives Considered** | Products that were assessed but not recommended, and why |
-| **Replacement Analysis** | If replacing existing cover — comparison, risks, and justification |
-| **Risks & Limitations** | Exclusions, stand-down periods, and limitations the client should know |
-| **Fee & Commission Disclosure** | Full transparency on how the adviser is remunerated |
-| **Adviser Disclosure** | Licence details, complaints process, and regulatory information |
+| **Nature & Scope of Advice** | What the client asked for and what this advice covers |
+| **Client Summary** | Personal details, income, dependents — pulled from Trail |
+| **Existing Insurance Profile** | Current policies, cover levels, premiums, provider |
+| **Needs Analysis** | Cover requirements across life, trauma, income protection, medical |
+| **Recommendations** | Specific products, cover levels, premiums — with your reasoning for each |
+| **Replacement Analysis** | If switching companies — comparison, key differences, risks of replacing |
+| **Supporting Research** | Quote Monster comparisons, QPR ratings, product feature breakdowns |
+| **Risks & Limitations** | Exclusions, stand-down periods, anything the client needs to know |
+| **Fee & Commission Disclosure** | Templated per insurer — AIA, Chubb, nib, Partners, etc. |
+| **Adviser Disclosure** | Licence details, complaints process, regulatory information |
 
 All formatted with your company branding — logo, colours, fonts, professional layout.
 
@@ -94,11 +148,11 @@ All formatted with your company branding — logo, colours, fonts, professional 
 
 | Metric | Current | With Automation |
 |:-------|:--------|:----------------|
-| **Time per SOA** | 3-5 hours | ~30 minutes |
-| **SOAs per week** (estimate) | 5-8 | 5-8 |
-| **Weekly hours on SOA work** | 15-40 hrs | 2.5-4 hrs |
-| **Annual hours on SOA work** | 780-2,080 hrs | 130-208 hrs |
-| **Hours saved per year** | — | **650-1,870 hrs** |
+| **Time per SOA** | 3-5 hours | ~1 min generation + quick review |
+| **SOAs per week** | 5-8 | 5-8 (or more — no longer capacity-limited) |
+| **Weekly hours on SOAs** | 15-40 hrs | ~1-2 hrs (review only) |
+| **Annual hours on SOAs** | 780-2,080 hrs | 50-100 hrs |
+| **Hours saved per year** | — | **730-1,980 hrs** |
 
 <br>
 
@@ -114,18 +168,6 @@ Assuming a full-time employee dedicated primarily to SOA production:
 | **Year 1 net saving** | **$34,000 - $54,000** |
 | **Year 2+ annual saving** | **$56,000 - $76,000** |
 
-<br>
-
-### ROI Timeline
-
-```
-Month 1-2    ██████████░░░░░░░░░░  Build phase — platform in development
-Month 3      ████████████████████  Go live — SOA automation active
-Month 4-6    $$$$$$$$$$$$$$$$$$$$  Break-even on build cost reached
-Month 7-12   $$$$$$$$$$$$$$$$$$$$  Pure savings — $4,500-6,300/month
-Year 2+      $$$$$$$$$$$$$$$$$$$$  $56,000-76,000 annual saving
-```
-
 **Payback period: 3-5 months.** After that, it's straight savings every month.
 
 <br>
@@ -134,11 +176,12 @@ Year 2+      $$$$$$$$$$$$$$$$$$$$  $56,000-76,000 annual saving
 
 | Benefit | Impact |
 |:--------|:-------|
-| **Faster turnaround** | Clients get their SOA same-day instead of waiting days |
-| **Consistency** | Every SOA follows the same high standard — no variance between writers |
-| **Compliance confidence** | Automated checks mean nothing gets missed before FMA audits |
-| **Scalability** | Take on more clients without hiring more admin staff |
-| **Staff redeployment** | SOA writer can focus on client relationships, renewals, or business development |
+| **One-Call Close** | Client gets the SOA while they're still warm — no "I'll get back to you in a couple of days" |
+| **No Lost Deals** | Applications don't sit waiting on SOA approval. Strike while the iron's hot. |
+| **Consistency** | Every SOA follows the same high standard — no variance, no missed sections |
+| **Compliance Confidence** | Automated checks mean nothing gets missed before FMA audits |
+| **Scalability** | Take on more clients without hiring more staff |
+| **Staff Redeployment** | Tama can focus on client relationships, renewals, or business development |
 
 <br>
 
@@ -148,18 +191,33 @@ Year 2+      $$$$$$$$$$$$$$$$$$$$  $56,000-76,000 annual saving
 
 ## Platform Features
 
-<br>
-
 | Feature | Detail |
 |:--------|:-------|
-| **Trail CRM Integration** | Direct API connection — pulls client data automatically, pushes completed SOAs back |
-| **AI-Powered Generation** | Uses advanced AI (Claude by Anthropic) to analyse situations and generate personalised advice reasoning |
-| **NZ Product Database** | Insurance products from major NZ insurers — premiums, features, exclusions, all searchable |
-| **Adviser Dashboard** | Clean web interface to review, edit, and approve SOA drafts |
-| **Compliance Engine** | Validates every SOA against FMA requirements before finalisation |
+| **Voice & Transcript Input** | Send a voice note or let live call transcription handle it. AI extracts everything automatically. |
+| **Trail CRM Integration** | Direct API connection — pulls client data, pushes completed SOAs back |
+| **Quote Monster Integration** | Pulls premium comparisons, product ratings, QPR research as supporting evidence |
+| **AI-Powered Generation** | Merges your instructions with verified data to produce a complete, personalised SOA |
 | **Branded PDF Export** | Professional documents matching your company branding |
-| **Audit Trail** | Full logging of every generated document — who, when, what was changed |
-| **Role-Based Access** | Advisers, paraplanners, and admins each see only what they need |
+| **Review Dashboard** | Clean web interface to review, edit, and send SOAs |
+| **Compliance Engine** | Validates every SOA against FMA requirements. Commission disclosures auto-populated per insurer. |
+| **Full Audit Trail** | Every document logged — who, when, what was changed. FMA audit-ready. |
+
+<br>
+
+---
+
+<br>
+
+## Lead Reactivation
+
+Separate to the SOA automation — you've got 1,500+ lapsed leads and former clients that haven't been contacted in a while. We'll set up an AI agent that works through that list, reaches out, qualifies interest, and books appointments directly into your calendar.
+
+| | |
+|:--|:--|
+| **Setup** | $850 (one-off) — agent configuration, messaging, calendar integration |
+| **Per Booked Appointment** | TBD — you only pay when a qualified lead actually books a call |
+
+**What we need:** Send through the lapsed leads CSV once you've filtered out your existing clients. Name, phone/mobile, email, and any other details you have (previous provider, policy type, etc).
 
 <br>
 
@@ -169,18 +227,14 @@ Year 2+      $$$$$$$$$$$$$$$$$$$$  $56,000-76,000 annual saving
 
 ## Data Privacy & Security
 
-Insurance SOAs contain highly sensitive personal information. We take this seriously.
-
 | Area | Approach |
 |:-----|:---------|
 | **NZ Privacy Act 2020** | Fully compliant — data used only for its stated purpose |
 | **Encryption** | All data encrypted at rest (AES-256) and in transit (TLS 1.3) |
-| **AI Processing** | Client identifying details are anonymised before AI processing. No client data is stored by the AI provider. |
+| **AI Processing** | Client details anonymised before AI processing. No data stored by AI provider. |
 | **Access Control** | Role-based permissions — only authorised users access client data |
 | **Audit Logging** | Every action logged with timestamp and user — FMA audit-ready |
-| **Data Retention** | 7-year SOA retention as required by FMA regulations |
-| **Client Consent** | Clause added to your engagement agreement covering AI-assisted advice preparation |
-| **Hosting** | Hosted on secure cloud infrastructure with NZ/AU data residency |
+| **7-Year Retention** | SOA records stored as required by FMA regulations |
 
 <br>
 
@@ -192,10 +246,10 @@ Insurance SOAs contain highly sensitive personal information. We take this serio
 
 | Phase | Weeks | Deliverables |
 |:------|:------|:-------------|
-| **Phase 1 — Foundation** | 1-2 | Trail API integration, client data sync, database setup |
-| **Phase 2 — SOA Engine** | 3-5 | Needs analysis, product database, AI recommendation engine, document generator, compliance checks |
-| **Phase 3 — Dashboard** | 6-7 | Adviser review interface, branding, PDF export, Trail sync |
-| **Phase 4 — Launch** | 8 | Testing with real scenarios, team training, go live |
+| **Phase 1 — Foundation & Trail** | 1-2 | Trail API connection, client data sync, database setup, voice transcription pipeline |
+| **Phase 2 — SOA Engine & Quote Monster** | 3-5 | AI recommendation engine, document generator, Quote Monster integration, compliance checks, template matching |
+| **Phase 3 — Dashboard & PDF** | 6-7 | Review interface, branded PDF generation, email sending, Trail sync, live call transcription upgrade |
+| **Phase 4 — Launch** | 8 | Testing with real scenarios, fine-tuning against your existing SOAs, team training, go live |
 
 <br>
 
@@ -205,40 +259,12 @@ Insurance SOAs contain highly sensitive personal information. We take this serio
 
 ## What We Need From You
 
-To build this right, we need a few things upfront:
-
-<br>
-
-### 1. Your Current Process
-Walk us through how your team produces an SOA today, start to finish:
-- What's the step-by-step flow?
-- Where are the biggest time sinks?
-- What happens inside Trail vs outside Trail (Word, spreadsheets, etc.)?
-- Which steps must stay manual (adviser judgment calls, specific sign-offs)?
-
-### 2. Sample SOA Documents
-2-3 completed SOAs (client names redacted) so we can match:
-- Document structure and section ordering
-- Tone and language style
-- Branding (logo, colours, fonts)
-- Any custom sections specific to your brokerage
-
-### 3. Insurer Panel
-Which insurers do you primarily work with? We'll load these first:
-- AIA, Partners Life, Fidelity Life, Asteron Life, Cigna/Chubb, nib, others?
-
-### 4. Trail API Access
-Email **farran@gettrail.com** to request API access. Mention you're building an internal automation tool that connects via their official API.
-
-### 5. Team Details
-- How many advisers will use the system?
-- Do paraplanners or assistants also need access?
-- Any specific internal sign-off or compliance review process?
-
-### 6. Edge Cases
-- Do you handle policy replacements (switching insurers)? Extra disclosure required.
-- Personal insurance only, or also business (key person, shareholder protection)?
-- Non-standard client situations — trusts, business owners, partnerships?
+| # | What | Detail |
+|:--|:-----|:-------|
+| 1 | **2-3 Completed SOAs** | Client names redacted — so we can match your exact format, tone, and branding |
+| 2 | **Template Library** | Commission disclosure templates per insurer and any other templated sections |
+| 3 | **Trail API Access** | Email **farran@gettrail.com** — mention you're building an internal automation tool |
+| 4 | **Lapsed Leads CSV** | 1,500+ old leads, filtered for non-current clients. Name, phone, email, previous provider. |
 
 <br>
 
@@ -250,9 +276,9 @@ Email **farran@gettrail.com** to request API access. Mention you're building an 
 
 | # | Action | Who |
 |:--|:-------|:----|
-| 1 | Review this proposal and send through the info listed above | Mat |
+| 1 | Send through SOA samples, templates & leads CSV | Mat |
 | 2 | Email farran@gettrail.com for Trail API access | Mat |
-| 3 | Confirm scope, timeline, and pricing | Both |
+| 3 | Confirm scope & kick off | Both |
 | 4 | Build begins | Benji |
 
 <br>

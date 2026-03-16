@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOA Automation Platform &mdash; Overview for Mat</title>
+    <title>SOA Automation &mdash; Overview for Mat</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -21,11 +17,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── Hero ── */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: white;
-            padding: 100px 40px 80px;
+            padding: 80px 40px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -34,908 +29,203 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
                         radial-gradient(circle at 70% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 12px; line-height: 1.1; }
+        .hero .subtitle { font-size: 1.15rem; color: #94a3b8; font-weight: 300; }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
 
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        .hero .tag {
-            display: inline-block;
-            margin-top: 32px;
-            padding: 8px 20px;
-            background: rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: #a5b4fc;
-            font-weight: 500;
-        }
-
-        /* ── Container ── */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* ── Sections ── */
-        section {
-            padding: 80px 0;
-        }
-
-        section + section {
-            border-top: 1px solid #e5e7eb;
-        }
+        section { padding: 64px 0; }
+        section + section { border-top: 1px solid #e5e7eb; }
 
         .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #6366f1;
-            margin-bottom: 12px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: #6366f1; margin-bottom: 10px;
         }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 20px;
-            color: #0f172a;
-        }
+        h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 16px; color: #0f172a; }
+        h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 12px; margin-top: 32px; color: #1e293b; }
+        p { font-size: 1rem; color: #475569; margin-bottom: 14px; max-width: 720px; }
+        strong { color: #1e293b; font-weight: 600; }
 
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            margin-top: 40px;
-            color: #1e293b;
-        }
-
-        p {
-            font-size: 1.05rem;
-            color: #475569;
-            margin-bottom: 16px;
-            max-width: 720px;
-        }
-
-        strong {
-            color: #1e293b;
-            font-weight: 600;
-        }
-
-        /* ── Flow Diagram ── */
+        /* Flow */
         .flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            margin: 48px 0;
-            flex-wrap: wrap;
+            display: flex; align-items: center; justify-content: center;
+            gap: 0; margin: 36px 0; flex-wrap: wrap;
         }
 
         .flow-step {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 28px 24px;
-            text-align: center;
-            min-width: 160px;
-            flex: 1;
+            background: white; border: 2px solid #e2e8f0; border-radius: 16px;
+            padding: 24px 20px; text-align: center; min-width: 140px; flex: 1;
             transition: all 0.2s;
         }
 
-        .flow-step:hover {
-            border-color: #6366f1;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
-        }
+        .flow-step:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1); }
+        .flow-step .icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .flow-step .label { font-weight: 600; font-size: 0.9rem; color: #1e293b; margin-bottom: 4px; }
+        .flow-step .desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+        .flow-arrow { font-size: 1.5rem; color: #cbd5e1; padding: 0 8px; flex-shrink: 0; }
 
-        .flow-step .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .flow-step .label {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #1e293b;
-            margin-bottom: 6px;
-        }
-
-        .flow-step .desc {
-            font-size: 0.8rem;
-            color: #64748b;
-            line-height: 1.5;
-        }
-
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: #cbd5e1;
-            padding: 0 8px;
-            flex-shrink: 0;
-        }
-
-        /* ── Tables ── */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 0.95rem;
-        }
-
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.93rem; }
         thead th {
-            text-align: left;
-            padding: 14px 20px;
-            background: #f8fafc;
-            font-weight: 600;
-            color: #374151;
-            border-bottom: 2px solid #e5e7eb;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            text-align: left; padding: 12px 18px; background: #f8fafc;
+            font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb;
+            font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;
         }
+        tbody td { padding: 12px 18px; border-bottom: 1px solid #f1f5f9; color: #475569; }
+        tbody tr:hover { background: #f8fafc; }
+        tbody td:first-child { font-weight: 600; color: #1e293b; }
 
-        tbody td {
-            padding: 14px 20px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #475569;
-        }
-
-        tbody tr:hover {
-            background: #f8fafc;
-        }
-
-        tbody td:first-child {
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        /* ── Stat Cards ── */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .stat-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-        }
-
-        .stat-card .number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #6366f1;
-            letter-spacing: -1px;
-        }
-
-        .stat-card .unit {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            font-weight: 500;
-            margin-top: 4px;
-        }
-
-        .stat-card .context {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-top: 8px;
-        }
-
-        /* ── ROI Highlight ── */
-        .roi-highlight {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            padding: 48px;
-            color: white;
-            margin: 40px 0;
-        }
-
-        .roi-highlight h3 {
-            color: white;
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-
-        .roi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
-            margin-top: 32px;
-        }
-
-        .roi-item .roi-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #34d399;
-        }
-
-        .roi-item .roi-label {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        /* ── Timeline ── */
-        .timeline {
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e5e7eb;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 32px;
-            position: relative;
-        }
-
-        .timeline-dot {
-            width: 50px;
-            height: 50px;
-            background: #6366f1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            z-index: 1;
-        }
-
-        .timeline-content {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px 24px;
-            flex: 1;
-        }
-
-        .timeline-content .phase-title {
-            font-weight: 700;
-            color: #1e293b;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .timeline-content .phase-weeks {
-            font-size: 0.8rem;
-            color: #6366f1;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .timeline-content .phase-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        /* ── Feature Grid ── */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.2s;
-        }
-
-        .feature-card:hover {
-            border-color: #c7d2fe;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
-        }
-
-        .feature-card .feature-icon {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .feature-card .feature-title {
-            font-weight: 700;
-            color: #1e293b;
-            font-size: 1rem;
-            margin-bottom: 6px;
-        }
-
-        .feature-card .feature-desc {
-            font-size: 0.88rem;
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        /* ── Security Grid ── */
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin: 32px 0;
-        }
-
-        .security-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            padding: 16px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-        }
-
-        .security-item .check {
-            color: #22c55e;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .security-item .security-text {
-            font-size: 0.9rem;
-            color: #475569;
-            line-height: 1.5;
-        }
-
-        .security-item .security-text strong {
-            display: block;
-            color: #1e293b;
-            margin-bottom: 2px;
-        }
-
-        /* ── Info Request ── */
-        .info-section {
-            background: white;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
-        }
-
-        .info-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 28px;
-            background: #f8fafc;
-        }
-
-        .info-card .info-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: #6366f1;
-            color: white;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-        }
-
-        .info-card .info-title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: #1e293b;
-            margin-bottom: 8px;
-        }
-
-        .info-card .info-desc {
-            font-size: 0.88rem;
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        .info-card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 8px;
-        }
-
-        .info-card ul li {
-            font-size: 0.88rem;
-            color: #64748b;
-            padding: 3px 0;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .info-card ul li::before {
-            content: '\2014';
-            position: absolute;
-            left: 0;
-            color: #cbd5e1;
-        }
-
-        /* ── Next Steps ── */
-        .next-steps {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 80px 40px;
-            text-align: center;
-        }
-
-        .next-steps h2 {
-            color: white;
-        }
-
-        .next-steps p {
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .steps-row {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .next-step-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 28px;
-            flex: 1;
-            min-width: 200px;
-            max-width: 260px;
-        }
-
-        .next-step-card .step-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #6366f1;
-            margin-bottom: 8px;
-        }
-
-        .next-step-card .step-action {
-            font-size: 0.95rem;
-            color: #e2e8f0;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .next-step-card .step-who {
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        /* ── Footer ── */
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
-
-        /* ── Comparison ── */
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 40px 0;
-        }
-
-        .comparison-card {
-            border-radius: 16px;
-            padding: 32px;
-        }
-
-        .comparison-card.before {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-        }
-
-        .comparison-card.after {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-        }
-
-        .comparison-card h4 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 16px;
-        }
-
+        /* Before/After */
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+        .comparison-card { border-radius: 16px; padding: 28px; }
+        .comparison-card.before { background: #fef2f2; border: 1px solid #fecaca; }
+        .comparison-card.after { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .comparison-card h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
         .comparison-card.before h4 { color: #dc2626; }
         .comparison-card.after h4 { color: #16a34a; }
+        .comparison-card ul { list-style: none; padding: 0; }
+        .comparison-card ul li { padding: 5px 0; font-size: 0.93rem; color: #475569; }
 
-        .comparison-card ul {
-            list-style: none;
-            padding: 0;
+        /* Timeline */
+        .timeline { margin: 32px 0; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+        .timeline-item { display: flex; gap: 20px; margin-bottom: 24px; position: relative; }
+        .timeline-dot {
+            width: 48px; height: 48px; background: #6366f1; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; z-index: 1;
         }
+        .timeline-content { background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; flex: 1; }
+        .timeline-content .phase-title { font-weight: 700; color: #1e293b; font-size: 0.95rem; margin-bottom: 4px; }
+        .timeline-content .phase-weeks { font-size: 0.78rem; color: #6366f1; font-weight: 600; margin-bottom: 6px; }
+        .timeline-content .phase-desc { font-size: 0.88rem; color: #64748b; line-height: 1.6; }
 
-        .comparison-card ul li {
-            padding: 6px 0;
-            font-size: 0.95rem;
-            color: #475569;
+        /* Info Cards */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 28px 0; }
+        .info-card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; background: #f8fafc; }
+        .info-card .info-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; background: #6366f1; color: white;
+            border-radius: 8px; font-weight: 700; font-size: 0.82rem; margin-bottom: 10px;
         }
+        .info-card .info-title { font-weight: 700; font-size: 0.95rem; color: #1e293b; margin-bottom: 6px; }
+        .info-card .info-desc { font-size: 0.86rem; color: #64748b; line-height: 1.6; }
 
-        /* ── Option Cards ── */
-        .option-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 40px 0;
+        /* Next Steps */
+        .next-steps {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white; padding: 64px 40px; text-align: center;
         }
-
-        .option-card {
-            border-radius: 20px;
-            padding: 36px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            position: relative;
-            transition: all 0.2s;
+        .next-steps h2 { color: white; }
+        .next-steps p { color: #94a3b8; max-width: 600px; margin: 0 auto 32px; }
+        .steps-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+        .next-step-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 24px; flex: 1; min-width: 180px; max-width: 220px;
         }
+        .next-step-card .step-num { font-size: 1.8rem; font-weight: 800; color: #6366f1; margin-bottom: 6px; }
+        .next-step-card .step-action { font-size: 0.9rem; color: #e2e8f0; font-weight: 500; margin-bottom: 4px; }
+        .next-step-card .step-who { font-size: 0.78rem; color: #64748b; }
 
-        .option-card:hover {
-            border-color: #6366f1;
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
-        }
+        footer { text-align: center; padding: 32px; color: #94a3b8; font-size: 0.82rem; }
 
-        .option-card.recommended {
-            border-color: #6366f1;
-        }
-
-        .option-card .option-badge {
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .option-card .option-badge.a {
-            background: #f1f5f9;
-            color: #475569;
-        }
-
-        .option-card .option-badge.b {
-            background: #eef2ff;
-            color: #6366f1;
-        }
-
-        .option-card .option-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 12px;
-        }
-
-        .option-card .option-desc {
-            font-size: 0.95rem;
-            color: #64748b;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .option-card .option-steps {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .option-card .option-steps li {
-            padding: 8px 0;
-            padding-left: 28px;
-            position: relative;
-            font-size: 0.9rem;
-            color: #475569;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .option-card .option-steps li:last-child {
-            border-bottom: none;
-        }
-
-        .option-card .option-steps li .step-icon {
-            position: absolute;
-            left: 0;
-            top: 8px;
-        }
-
-        .option-card .option-time {
-            margin-top: 20px;
-            padding: 12px 16px;
-            background: #f8fafc;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        .option-card .option-time strong {
-            color: #6366f1;
-        }
-
-        /* ── Lead Reactivation ── */
-        .lead-section {
-            background: #f8fafc;
-        }
-
-        .lead-highlight {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 32px 0;
-        }
-
-        .lead-highlight .lead-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin-top: 24px;
-        }
-
-        .lead-highlight .lead-item {
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-        }
-
-        .lead-highlight .lead-item .lead-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6366f1;
-            margin-bottom: 8px;
-        }
-
-        .lead-highlight .lead-item .lead-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #0f172a;
-        }
-
-        .lead-highlight .lead-item .lead-desc {
-            font-size: 0.88rem;
-            color: #64748b;
-            margin-top: 4px;
-        }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
-            .hero { padding: 60px 24px 50px; }
+            .hero { padding: 50px 24px 40px; }
             .hero h1 { font-size: 2rem; }
             .container { padding: 0 24px; }
-            section { padding: 60px 0; }
+            section { padding: 48px 0; }
             .flow { flex-direction: column; gap: 0; }
             .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
             .comparison { grid-template-columns: 1fr; }
-            .option-cards { grid-template-columns: 1fr; }
-            .roi-highlight { padding: 32px 24px; }
-            .roi-grid { grid-template-columns: 1fr; gap: 24px; }
             .steps-row { flex-direction: column; align-items: center; }
-            .lead-highlight .lead-grid { grid-template-columns: 1fr; }
-            h2 { font-size: 1.6rem; }
+            h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero -->
     <div class="hero">
         <div class="hero-content">
-            <h1>SOA Automation Platform</h1>
-            <p class="subtitle">Generate compliance-ready Statements of Advice in under 60 seconds</p>
-            <span class="tag">Overview &mdash; March 2026</span>
+            <h1>SOA Automation</h1>
+            <p class="subtitle">AI-generated Statements of Advice in under 60 seconds</p>
         </div>
     </div>
 
-    <!-- The Problem -->
+    <!-- The Idea -->
     <section>
         <div class="container">
-            <div class="section-label">The Problem</div>
-            <h2>SOAs are your biggest bottleneck</h2>
-            <p>Right now, after every client call you send a voice note to Tama explaining the situation &mdash; what the client has, what you're recommending, which company and why. Tama writes it all up into a Statement of Advice. That process takes hours, sometimes days.</p>
-            <p>Meanwhile, the client's sitting there waiting. You can't submit the application until they've approved the SOA. Clients go cold. Deals stall. And you've got someone spending their whole day on what's essentially data entry and templated writing.</p>
-            <p>We're going to fix that. <strong>The AI takes over Tama's role entirely</strong> &mdash; it listens to your instructions, pulls the data from Trail, grabs the comparisons from Quote Monster, and produces a complete, branded SOA document in under 60 seconds.</p>
+            <div class="section-label">The Idea</div>
+            <h2>Replace the SOA bottleneck with AI</h2>
+            <p>Right now you finish a client call, send Tama a voice note, and wait hours or days for the SOA. The client's waiting, the application's stuck, and deals go cold.</p>
+            <p><strong>The fix:</strong> AI takes your voice note (or call transcript), pulls the client data from Trail and comparisons from Quote Monster, and generates a complete branded SOA in under 60 seconds. You do a quick review and send.</p>
         </div>
     </section>
 
-    <!-- Two Options -->
+    <!-- How It Works -->
     <section>
         <div class="container">
-            <div class="section-label">Two Approaches</div>
-            <h2>How you want to use it</h2>
-            <p>We can set this up in two ways depending on how you want to work. Both produce the same SOA output &mdash; the difference is how the input goes in.</p>
-
-            <div class="option-cards">
-                <div class="option-card">
-                    <span class="option-badge a">Option A</span>
-                    <div class="option-title">Voice Note</div>
-                    <div class="option-desc">Same workflow you already use with Tama. After a client call, you record a voice note explaining the situation. Instead of Tama picking it up hours later, the AI processes it immediately.</div>
-                    <ul class="option-steps">
-                        <li><span class="step-icon">1.</span> You finish a client call</li>
-                        <li><span class="step-icon">2.</span> Record a voice note with your recommendation</li>
-                        <li><span class="step-icon">3.</span> AI transcribes and extracts the details</li>
-                        <li><span class="step-icon">4.</span> Pulls verified data from Trail + Quote Monster</li>
-                        <li><span class="step-icon">5.</span> Generates the full SOA document</li>
-                        <li><span class="step-icon">6.</span> You review and send</li>
-                    </ul>
-                    <div class="option-time">SOA ready in <strong>~60 seconds</strong> after you finish the voice note</div>
-                </div>
-
-                <div class="option-card recommended">
-                    <span class="option-badge b">Option B &mdash; Recommended</span>
-                    <div class="option-title">Live Call Transcription</div>
-                    <div class="option-desc">Your client call is transcribed in real time. The moment you hang up, the AI already has everything it needs. No voice note required. The SOA is generated while Tess is still on the phone doing the application.</div>
-                    <ul class="option-steps">
-                        <li><span class="step-icon">1.</span> You're on a call with the client (transcription running)</li>
-                        <li><span class="step-icon">2.</span> You discuss their situation, recommend cover, explain why</li>
-                        <li><span class="step-icon">3.</span> Call ends &mdash; AI has the full transcript</li>
-                        <li><span class="step-icon">4.</span> Pulls verified data from Trail + Quote Monster</li>
-                        <li><span class="step-icon">5.</span> SOA generates while Tess does the application</li>
-                        <li><span class="step-icon">6.</span> Client comes back from application, SOA is in their inbox</li>
-                    </ul>
-                    <div class="option-time">One call. One signature. <strong>Closed.</strong></div>
-                </div>
-            </div>
-
-            <p style="margin-top: 24px;"><strong>Our recommendation:</strong> We start with Option A to get you live fast and dial in the SOA quality. Then we upgrade to Option B once you're happy with the output. The SOA engine is the same for both &mdash; the only difference is how the input goes in.</p>
-        </div>
-    </section>
-
-    <!-- How It Works (Technical Flow) -->
-    <section>
-        <div class="container">
-            <div class="section-label">Under the Hood</div>
-            <h2>How everything connects</h2>
-            <p>Three data sources feed into the SOA engine. Each one plays a specific role.</p>
+            <div class="section-label">How It Works</div>
+            <h2>Voice note in, SOA out</h2>
+            <p>Same workflow you already use &mdash; just faster. Record your voice note after the call, and the AI does the rest.</p>
 
             <div class="flow">
                 <div class="flow-step">
                     <div class="icon">&#127908;</div>
-                    <div class="label">Your Input</div>
-                    <div class="desc">Voice note or call transcript &mdash; what you're recommending and why</div>
+                    <div class="label">Voice Note</div>
+                    <div class="desc">You record your recommendation after the call</div>
                 </div>
-                <div class="flow-arrow">+</div>
+                <div class="flow-arrow">&rarr;</div>
                 <div class="flow-step">
-                    <div class="icon">&#128194;</div>
-                    <div class="label">Trail CRM</div>
-                    <div class="desc">Verified client data &mdash; fact find, financials, existing policies</div>
+                    <div class="icon">&#128279;</div>
+                    <div class="label">Data Pull</div>
+                    <div class="desc">AI grabs client info from Trail + comparisons from Quote Monster</div>
                 </div>
-                <div class="flow-arrow">+</div>
+                <div class="flow-arrow">&rarr;</div>
                 <div class="flow-step">
-                    <div class="icon">&#128202;</div>
-                    <div class="label">Quote Monster</div>
-                    <div class="desc">Premium comparisons, product ratings, insurer research</div>
+                    <div class="icon">&#129302;</div>
+                    <div class="label">SOA Generated</div>
+                    <div class="desc">Complete document with all FMA-required sections</div>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-step">
+                    <div class="icon">&#128196;</div>
+                    <div class="label">Review &amp; Send</div>
+                    <div class="desc">Quick check, then straight to the client as a branded PDF</div>
                 </div>
             </div>
-
-            <div style="text-align: center; margin: -20px 0 20px;">
-                <div class="flow-arrow" style="font-size: 2rem;">&#8595;</div>
-            </div>
-
-            <div class="flow">
-                <div class="flow-step" style="border-color: #6366f1; background: #fafafe;">
-                    <div class="icon">&#9881;&#65039;</div>
-                    <div class="label">SOA Engine (AI)</div>
-                    <div class="desc">Merges your instructions with verified data, generates the full document</div>
-                </div>
-                <div class="flow-arrow">&#8594;</div>
-                <div class="flow-step">
-                    <div class="icon">&#128221;</div>
-                    <div class="label">Quick Review</div>
-                    <div class="desc">You glance over it, tweak if needed</div>
-                </div>
-                <div class="flow-arrow">&#8594;</div>
-                <div class="flow-step">
-                    <div class="icon">&#10004;&#65039;</div>
-                    <div class="label">Send &amp; Save</div>
-                    <div class="desc">PDF to client, saved back to Trail</div>
-                </div>
-            </div>
-
-            <h3>Why all three sources matter</h3>
-            <table>
-                <thead>
-                    <tr><th>Source</th><th>What It Provides</th><th>Why It Matters</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Your Voice / Transcript</td>
-                        <td>Your recommendation, reasoning, which company, which cover levels</td>
-                        <td>This is the adviser's judgement &mdash; the AI can't make this call, only you can</td>
-                    </tr>
-                    <tr>
-                        <td>Trail CRM</td>
-                        <td>Client profile, fact find, financials, dependents, existing policies, policy numbers</td>
-                        <td>Verified data &mdash; not relying on what someone said on a phone call. Exact numbers, exact details.</td>
-                    </tr>
-                    <tr>
-                        <td>Quote Monster</td>
-                        <td>Premium comparisons, product ratings, feature breakdowns, QPR research</td>
-                        <td>The supporting evidence section &mdash; shows why you're recommending AIA over Chubb, backed by independent research</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </section>
 
     <!-- Before / After -->
     <section>
         <div class="container">
-            <div class="section-label">Impact</div>
-            <h2>What changes</h2>
+            <div class="section-label">The Difference</div>
+            <h2>Today vs. with automation</h2>
 
             <div class="comparison">
                 <div class="comparison-card before">
                     <h4>Today</h4>
                     <ul>
-                        <li>You finish a client call</li>
-                        <li>Send a voice note to Tama</li>
+                        <li>Finish call, send voice note to Tama</li>
                         <li>Wait hours or days for the SOA</li>
                         <li>Client goes cold, application stuck</li>
                         <li>Chase up, follow up, chase up again</li>
-                        <li>Staff tied up on SOA production</li>
                     </ul>
                 </div>
                 <div class="comparison-card after">
                     <h4>With Automation</h4>
                     <ul>
-                        <li>You finish a client call</li>
-                        <li>SOA generates in 60 seconds</li>
+                        <li>Finish call, record voice note</li>
+                        <li>SOA ready in 60 seconds</li>
                         <li>Client gets it while they're still at their desk</li>
                         <li>Approve and submit in the same session</li>
-                        <li>No chasing, no waiting, no lost deals</li>
-                        <li>Tama redeployed to higher-value work</li>
                     </ul>
                 </div>
             </div>
@@ -946,145 +236,32 @@
     <section>
         <div class="container">
             <div class="section-label">The Document</div>
-            <h2>What's in every SOA</h2>
-            <p>Every generated document matches your existing format and includes all FMA-required sections, professionally formatted with your company branding.</p>
+            <h2>What the AI generates</h2>
+            <p>Every SOA matches your existing format and includes all FMA-required sections with your company branding.</p>
 
             <table>
                 <thead>
-                    <tr><th>Section</th><th>Description</th></tr>
+                    <tr><th>Section</th><th>What's In It</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Nature &amp; Scope of Advice</td><td>What the client asked for and what this advice covers</td></tr>
+                    <tr><td>Nature &amp; Scope</td><td>What the client asked for, what this advice covers</td></tr>
                     <tr><td>Client Summary</td><td>Personal details, income, dependents &mdash; pulled from Trail</td></tr>
-                    <tr><td>Existing Insurance Profile</td><td>Current policies, cover levels, premiums, provider</td></tr>
-                    <tr><td>Needs Analysis</td><td>Cover requirements across life, trauma, income protection, medical</td></tr>
-                    <tr><td>Recommendations</td><td>Specific products, cover levels, premiums &mdash; with your reasoning for each</td></tr>
-                    <tr><td>Replacement Analysis</td><td>If switching companies &mdash; comparison, key differences, risks of replacing</td></tr>
-                    <tr><td>Supporting Research</td><td>Quote Monster comparisons, QPR ratings, product feature breakdowns</td></tr>
+                    <tr><td>Existing Cover</td><td>Current policies, cover levels, premiums, provider</td></tr>
+                    <tr><td>Recommendations</td><td>Specific products, cover levels, premiums &mdash; with your reasoning</td></tr>
+                    <tr><td>Replacement Analysis</td><td>Why you're switching companies, key differences, risks</td></tr>
+                    <tr><td>Supporting Research</td><td>Quote Monster comparisons, QPR ratings, product breakdowns</td></tr>
                     <tr><td>Risks &amp; Limitations</td><td>Exclusions, stand-down periods, anything the client needs to know</td></tr>
-                    <tr><td>Fee &amp; Commission Disclosure</td><td>Templated per insurer &mdash; AIA, Chubb, nib, Partners, etc.</td></tr>
-                    <tr><td>Adviser Disclosure</td><td>Licence details, complaints process, regulatory information</td></tr>
-                </tbody>
-            </table>
-
-            <p>All formatted with your company branding &mdash; logo, colours, fonts, professional layout. The output matches what you're already sending to clients.</p>
-        </div>
-    </section>
-
-    <!-- Benefits -->
-    <section>
-        <div class="container">
-            <div class="section-label">Why This Works</div>
-            <h2>What you get out of it</h2>
-
-            <table>
-                <thead>
-                    <tr><th>Benefit</th><th>Impact</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>One-Call Close</td><td>Client gets the SOA while they're still warm &mdash; no "I'll get back to you in a couple of days"</td></tr>
-                    <tr><td>No Lost Deals</td><td>Applications don't sit waiting on SOA approval. Strike while the iron's hot.</td></tr>
-                    <tr><td>Consistency</td><td>Every SOA follows the same high standard &mdash; no variance, no missed sections</td></tr>
-                    <tr><td>Compliance Confidence</td><td>Automated checks mean nothing gets missed before FMA audits</td></tr>
-                    <tr><td>Scalability</td><td>Take on more clients without capacity being the bottleneck</td></tr>
-                    <tr><td>Free Up Your Team</td><td>Tama can focus on client relationships, renewals, or business development instead of writing SOAs</td></tr>
+                    <tr><td>Disclosures</td><td>Commission/fee disclosure (templated per insurer), adviser details, regulatory info</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- Build Phases -->
     <section>
         <div class="container">
-            <div class="section-label">Platform</div>
-            <h2>What's included</h2>
-
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">&#127908;</div>
-                    <div class="feature-title">Voice &amp; Transcript Input</div>
-                    <div class="feature-desc">Send a voice note or let the live call transcription handle it. The AI extracts client details, cover levels, and your reasoning automatically.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128279;</div>
-                    <div class="feature-title">Trail CRM Integration</div>
-                    <div class="feature-desc">Direct API connection &mdash; pulls client data automatically and pushes completed SOAs back to the client's profile.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128202;</div>
-                    <div class="feature-title">Quote Monster Integration</div>
-                    <div class="feature-desc">Pulls in your premium comparisons, product ratings, and QPR research as supporting evidence for the SOA.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#129302;</div>
-                    <div class="feature-title">AI-Powered Generation</div>
-                    <div class="feature-desc">Advanced AI merges your instructions with verified data to produce a complete, personalised SOA document with full reasoning.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128196;</div>
-                    <div class="feature-title">Branded PDF Export</div>
-                    <div class="feature-desc">Professional documents matching your company branding &mdash; logo, colours, fonts. Matches what you're already sending to clients.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128187;</div>
-                    <div class="feature-title">Review Dashboard</div>
-                    <div class="feature-desc">Clean web interface to review the generated SOA, make quick edits, and send directly to the client via email.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128737;&#65039;</div>
-                    <div class="feature-title">Compliance Engine</div>
-                    <div class="feature-desc">Validates every SOA against FMA requirements. Commission disclosures auto-populated per insurer. Nothing slips through.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#128270;</div>
-                    <div class="feature-title">Full Audit Trail</div>
-                    <div class="feature-desc">Every generated document logged &mdash; who created it, when, what was changed. FMA audit-ready from day one.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Security -->
-    <section>
-        <div class="container">
-            <div class="section-label">Security</div>
-            <h2>Data privacy &amp; security</h2>
-            <p>Insurance SOAs contain highly sensitive personal information. Here's how we protect it.</p>
-
-            <div class="security-grid">
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>NZ Privacy Act 2020</strong>Fully compliant &mdash; data used only for its stated purpose</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>Encryption</strong>AES-256 at rest, TLS 1.3 in transit</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>AI Processing</strong>Client details anonymised before AI processing. No data stored by AI provider.</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>Access Control</strong>Role-based permissions &mdash; only authorised users access client data</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>Audit Logging</strong>Every action logged with timestamp and user &mdash; FMA audit-ready</div>
-                </div>
-                <div class="security-item">
-                    <div class="check">&#10003;</div>
-                    <div class="security-text"><strong>7-Year Retention</strong>SOA records stored as required by FMA regulations</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Build Timeline -->
-    <section>
-        <div class="container">
-            <div class="section-label">Timeline</div>
-            <h2>Build phases</h2>
+            <div class="section-label">The Build</div>
+            <h2>How we'd build it</h2>
 
             <div class="timeline">
                 <div class="timeline-item">
@@ -1092,7 +269,7 @@
                     <div class="timeline-content">
                         <div class="phase-title">Foundation &amp; Trail Integration</div>
                         <div class="phase-weeks">Weeks 1&ndash;2</div>
-                        <div class="phase-desc">Trail API connection, client data sync, database setup, authentication. Voice note transcription pipeline.</div>
+                        <div class="phase-desc">Connect to Trail API, sync client data, set up voice note transcription pipeline.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -1100,7 +277,7 @@
                     <div class="timeline-content">
                         <div class="phase-title">SOA Engine &amp; Quote Monster</div>
                         <div class="phase-weeks">Weeks 3&ndash;5</div>
-                        <div class="phase-desc">AI recommendation engine, document generator, Quote Monster integration, compliance validation. Template matching from your existing SOAs.</div>
+                        <div class="phase-desc">AI document generator, Quote Monster integration, compliance checks. Train against your existing SOAs to match your format and tone.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -1108,15 +285,15 @@
                     <div class="timeline-content">
                         <div class="phase-title">Dashboard &amp; PDF Export</div>
                         <div class="phase-weeks">Weeks 6&ndash;7</div>
-                        <div class="phase-desc">Review interface, branded PDF generation, email sending, push completed SOAs back to Trail. Live call transcription upgrade (Option B).</div>
+                        <div class="phase-desc">Review interface, branded PDF generation, email sending, sync completed SOAs back to Trail.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot">4</div>
                     <div class="timeline-content">
-                        <div class="phase-title">Launch</div>
+                        <div class="phase-title">Testing &amp; Launch</div>
                         <div class="phase-weeks">Week 8</div>
-                        <div class="phase-desc">Testing with real client scenarios, fine-tuning AI output against your existing SOAs, team training, go live.</div>
+                        <div class="phase-desc">Test with real client scenarios, fine-tune the output, team training, go live.</div>
                     </div>
                 </div>
             </div>
@@ -1124,27 +301,26 @@
     </section>
 
     <!-- What We Need -->
-    <section class="info-section">
+    <section>
         <div class="container">
             <div class="section-label">To Get Started</div>
-            <h2>What we need from you</h2>
-            <p>To get the ball rolling, we need a few things from your end.</p>
+            <h2>What I'd need from you</h2>
 
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-num">1</div>
                     <div class="info-title">2&ndash;3 Completed SOAs</div>
-                    <div class="info-desc">Send through completed SOA documents (client names redacted) so we can match your exact format, tone, structure, and branding.</div>
+                    <div class="info-desc">Client names redacted &mdash; so I can match your exact format, tone, and branding.</div>
                 </div>
                 <div class="info-card">
                     <div class="info-num">2</div>
                     <div class="info-title">Template Library</div>
-                    <div class="info-desc">Your commission disclosure templates per insurer (AIA, Chubb, nib, Partners, etc.) and any other templated sections you use.</div>
+                    <div class="info-desc">Commission disclosure templates per insurer (AIA, Chubb, nib, Partners, etc.) and any other templated sections.</div>
                 </div>
                 <div class="info-card">
                     <div class="info-num">3</div>
                     <div class="info-title">Trail API Access</div>
-                    <div class="info-desc">Email <strong>farran@gettrail.com</strong> and let them know you're building an internal automation tool that connects via their official API.</div>
+                    <div class="info-desc">Email <strong>farran@gettrail.com</strong> &mdash; let them know you're building an internal automation tool.</div>
                 </div>
             </div>
         </div>
@@ -1153,30 +329,25 @@
     <!-- Next Steps -->
     <div class="next-steps">
         <div class="container">
-            <div class="section-label" style="color: #6366f1;">Getting Started</div>
-            <h2>Next steps</h2>
-            <p>No commitment &mdash; just have a read, let me know what you think, and we'll go from there.</p>
+            <div class="section-label" style="color: #6366f1;">Next Steps</div>
+            <h2>What do you think?</h2>
+            <p>Have a read, let me know if this is what you're after, and we'll go from there.</p>
 
             <div class="steps-row">
                 <div class="next-step-card">
                     <div class="step-num">01</div>
-                    <div class="step-action">Have a look through this &amp; let me know your thoughts</div>
+                    <div class="step-action">Have a look &amp; let me know your thoughts</div>
                     <div class="step-who">Mat</div>
                 </div>
                 <div class="next-step-card">
                     <div class="step-num">02</div>
-                    <div class="step-action">We jump on a call and nail down exactly what you want</div>
+                    <div class="step-action">We nail down exactly what you want</div>
                     <div class="step-who">Both</div>
                 </div>
                 <div class="next-step-card">
                     <div class="step-num">03</div>
-                    <div class="step-action">Send through SOA samples &amp; templates so I can match your format</div>
+                    <div class="step-action">Send SOA samples &amp; get Trail API access</div>
                     <div class="step-who">Mat</div>
-                </div>
-                <div class="next-step-card">
-                    <div class="step-num">04</div>
-                    <div class="step-action">Request Trail API access</div>
-                    <div class="step-who">Mat &rarr; farran@gettrail.com</div>
                 </div>
             </div>
         </div>
